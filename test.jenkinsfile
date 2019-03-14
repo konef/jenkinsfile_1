@@ -11,5 +11,20 @@ pipeline {
                 sh label: '', script: 'echo "ass"'
             }
         }
+        stage ('create file') {
+            steps {
+                touch file: 'file.sh', timestamp: 0
+            }
+        }
+        stage ('write') {
+            steps {
+                sh 'echo "hello" > file.sh'
+            }
+        }
+        stage ('#@#@%$#@') {
+            steps {
+                sh label: '', script: 'cat file.sh'
+            }
+        }
     }
 }
