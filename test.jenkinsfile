@@ -1,15 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage ('take') {
+        stage ('create file') {
             steps {
-                git 'https://github.com/konef/hellobash'
+                touch file: 'file1.sh', timestamp: 0
+                touch file: 'file2.sh', timestamp: 0
             }
-        }
-        stage ('hello') {
-            steps {
-                sh label: '', script: 'bash hello.sh'
-            }
-        }
+        }        
     }
 }
