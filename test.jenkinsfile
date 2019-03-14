@@ -6,6 +6,28 @@ pipeline {
                 touch file: 'file1.sh', timestamp: 0
                 touch file: 'file2.sh', timestamp: 0
             }
-        }        
+        }
+        stage ('parallel stages') {
+            parallel {
+                stage ('stage1') {
+                    steps {
+                        sh 'echo "Hello World!" > file1.sh'
+                    }
+                }
+                stage ('stage2') {
+                    steps {
+                        sh 'echo "New Hello world!" > file2.sh'
+                    }
+                }
+            }
+        }
+        stage ('read') {
+            steps {
+                sh """
+                cat file1.sh
+                cat file2.sh
+                """
+            }
+        }
     }
 }
