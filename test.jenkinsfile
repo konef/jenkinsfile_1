@@ -33,7 +33,7 @@ pipeline {
         stage ("cat") {
             steps {
                 sh """
-                rmdir -rf backups
+                rmdir -r backups
                 git clone git@github.com:konef/backups.git
                 cd backups
                 rm -rf config.xml
