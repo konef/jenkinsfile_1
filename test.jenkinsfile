@@ -39,7 +39,7 @@ pipeline {
                 cp -rf /var/lib/jenkins/jobs/parallel_job/config.xml config.xml
                 git add -f config.xml
                 git commit -m "Build $BUILD_NUMBER" config.xml 
-          
+                git push -u origin master
                 """
             }
         }
