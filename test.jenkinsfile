@@ -1,11 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage ('clean workspace') {
-            steps {
-                cleanWs()
-            }
-        }
+
         stage ('create file') {
             steps {
                 touch file: 'file1.sh', timestamp: 0
