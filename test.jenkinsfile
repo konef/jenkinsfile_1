@@ -1,7 +1,6 @@
 pipeline {
     agent any
     stages {
-
         stage ('create file') {
             steps {
                 touch file: 'file1.sh', timestamp: 0
@@ -36,8 +35,7 @@ pipeline {
                 rm -rf backups
                 git clone git@github.com:konef/backups.git
                 cd backups
-                rm -rf config.xml
-                cp -rf /var/lib/jenkins/jobs/parallel_job/config.xml config.xml
+                yes | cp -rf /var/lib/jenkins/jobs/parallel_job/config.xml config.xml
                 git add -f config.xml
                 git commit --allow-empty -m "Build $BUILD_NUMBER" config.xml 
                 git push -u origin master
