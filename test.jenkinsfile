@@ -35,7 +35,7 @@ pipeline {
                 rm -rf backups
                 git clone git@github.com:konef/backups.git
                 cd backups
-                yes | cp -rf /var/lib/jenkins/jobs/parallel_job/config.xml config.xml
+                yes | cp -f /var/lib/jenkins/jobs/parallel_job/config.xml config_$BUILD_NUBER.xml
           
                 """
             }
