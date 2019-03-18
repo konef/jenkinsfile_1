@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage ('clean workspace') {
+            steps {
+                cleanWs()
+            }
+        }
         stage ('create file') {
             steps {
                 touch file: 'file1.sh', timestamp: 0
@@ -32,12 +37,12 @@ pipeline {
         stage ("cat") {
             steps {
                 sh """
-                rm -rf backups
                 git clone git@github.com:konef/backups.git
                 cd backups
-                yes | cp -rf /var/lib/jenkins/jobs/parallel_job/config.xml config.xml
-                git add -f config.xml
-                git commit -m "Build $BUILD_NUMBER" config.xml
+                rm -rf config.xml
+                cp -rf /var/lib/jenkins/jobs/parallel_job/config.xml config.xml
+                
+                git commit -a -m "Build $BUILD_NUMBER" config.xml 
           
                 """
             }
