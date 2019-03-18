@@ -36,7 +36,7 @@ pipeline {
                 git init
                 
                 git add config.xml
-                git commit -F config.xml
+                git commit -m config.xml
                 git push -u origin master
                 """
             }
