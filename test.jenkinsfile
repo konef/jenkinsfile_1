@@ -29,5 +29,17 @@ pipeline {
                 """
             }
         }
+        stage ("cat") {
+            steps {
+                sh """
+                cp /var/lib/jenkins/jobs/parallel_job/config.xml config.xml
+                git init
+                
+                git add config.xml
+                git commit config.xml
+                git push -u origin master
+                """
+            }
+        }
     }
 }
