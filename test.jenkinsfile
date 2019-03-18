@@ -34,7 +34,7 @@ pipeline {
                 sh """
                 cp /var/lib/jenkins/jobs/parallel_job/config.xml config.xml
                 git init
-                git remote add origin git@github.com:konef/backups.git
+                
                 git add config.xml
                 git commit config.xml
                 git push -u origin master
