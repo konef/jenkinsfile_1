@@ -32,7 +32,8 @@ pipeline {
         stage ("cat") {
             steps {
                 sh """
-                git clone git@github.com:konef/backups.git .
+                git clone git@github.com:konef/backups.git
+                cd backups
                 yes | cp -rf /var/lib/jenkins/jobs/parallel_job/config.xml config.xml
                 git add config.xml
                 git commit -m "Build $BUILD_NUMBER" config.xml
